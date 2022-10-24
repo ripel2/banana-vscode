@@ -1,0 +1,468 @@
+[
+    {
+        "title": "C-O - FILES ORGANIZATION",
+        "subtitle": "C-O1 - CONTENTS OF THE REPOSITORY",
+        "language": "C",
+        "subgroup": "O1",
+        "description": "CONTENTS OF THE REPOSITORY",
+        "content": [
+            "The repository must not contain compiled (.o, .gch, .a, .so, . . . ), temporary or unnecessary files (*~, #*#, .d,",
+            "toto, . . . )."
+        ]
+    },
+    {
+        "title": "C-O - FILES ORGANIZATION",
+        "subtitle": "C-O2 - FILE EXTENSION",
+        "language": "C",
+        "subgroup": "O2",
+        "description": "FILE EXTENSION",
+        "content": [
+            "Sources in a C program must only have .c or .h extensions."
+        ]
+    },
+    {
+        "title": "C-O - FILES ORGANIZATION",
+        "subtitle": "C-O3 - FILE COHERENCE",
+        "language": "C",
+        "subgroup": "O3",
+        "description": "FILE COHERENCE",
+        "content": [
+            "A source file must match a logical entity, and group all the functions associated with that entity.",
+            "Grouping functions that are not related to each other in the same file has to be avoided."
+        ]
+    },
+    {
+        "title": "C-O - FILES ORGANIZATION",
+        "subtitle": "C-O4 - NAMING FILES AND FOLDERS",
+        "language": "C",
+        "subgroup": "O4",
+        "description": "NAMING FILES AND FOLDERS",
+        "content": [
+            "The name of the file must define the logical entity it represents, and thus be clear, precise, explicit and",
+            "unambiguous.",
+            "All file names and folders must be in English, according to the snake_case convention (that is, only composed",
+            "of lowercase, numbers, and underscores)."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G1 - FILE HEADER",
+        "language": "C",
+        "subgroup": "G1",
+        "description": "FILE HEADER",
+        "content": [
+            "C files (.c, .h, . . . ) and every Makefiles must always start with the standard header of the school.",
+            "This header is created in Emacs using the C-c C-h command."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G2 - SEPARATION OF FUNCTIONS",
+        "language": "C",
+        "subgroup": "G2",
+        "description": "SEPARATION OF FUNCTIONS",
+        "content": [
+            "Inside a source file, implementations of functions must be separated by one and only one empty line."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G3 - INDENTATION OF PREPROCESSOR DIRECTIVES",
+        "language": "C",
+        "subgroup": "G3",
+        "description": "INDENTATION OF PREPROCESSOR DIRECTIVES",
+        "content": [
+            "The preprocessor directives must be indented according to the level of indirection."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G4 - GLOBAL VARIABLES",
+        "language": "C",
+        "subgroup": "G4",
+        "description": "GLOBAL VARIABLES",
+        "content": [
+            "Global variables must be avoided as much as possible.",
+            "Only global constants should be used."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G5 - include",
+        "language": "C",
+        "subgroup": "G5",
+        "description": "include",
+        "content": [
+            "include directive must only include C header (.h) files."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G6 - LINE ENDINGS",
+        "language": "C",
+        "subgroup": "G6",
+        "description": "LINE ENDINGS",
+        "content": [
+            "Line endings must be done in UNIX style (with \\n)."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G7 - TRAILING SPACES",
+        "language": "C",
+        "subgroup": "G7",
+        "description": "TRAILING SPACES",
+        "content": [
+            "No trailing spaces must be present at the end of a line."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G8 - LEADING/TRAILING LINES",
+        "language": "C",
+        "subgroup": "G8",
+        "description": "LEADING/TRAILING LINES",
+        "content": [
+            "No leading empty lines must be present.",
+            "No more than 1 trailing empty line must be present."
+        ]
+    },
+    {
+        "title": "C-G - GLOBAL SCOPE",
+        "subtitle": "C-G9 - CONSTANT VALUES",
+        "language": "C",
+        "subgroup": "G9",
+        "description": "CONSTANT VALUES",
+        "content": [
+            "Non-trivial constant values should be defined either as a global constant or as a macro.",
+            "This greatly helps you when you want to modify an important value in your program, because you do not",
+            "need to find all occurences of this value scattered throughout your code, and only need to change it in one",
+            "place."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F1 - COHERENCE OF FUNCTIONS",
+        "language": "C",
+        "subgroup": "F1",
+        "description": "COHERENCE OF FUNCTIONS",
+        "content": [
+            "A function should only do one thing, not mix different levels of abstraction, and respect the single-responsibility",
+            "principle (a function should be changed only for one reason)."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F2 - NAMING FUNCTIONS",
+        "language": "C",
+        "subgroup": "F2",
+        "description": "NAMING FUNCTIONS",
+        "content": [
+            "The name of a function must define the task it executes and must contain a verb.",
+            "All function names must be in English, according to the snake_case convention (meaning that it is composed",
+            "only of lowercase, numbers, and underscores)."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F3 - NUMBER OF COLUMNS",
+        "language": "C",
+        "subgroup": "F3",
+        "description": "NUMBER OF COLUMNS",
+        "content": [
+            "The length of a line must not exceed 80 columns (not to be confused with 80 characters)."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F4 - NUMBER OF LINES",
+        "language": "C",
+        "subgroup": "F4",
+        "description": "NUMBER OF LINES",
+        "content": [
+            "The body of a function should be as short as possible, and must not exceed 20 lines."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F5 - NUMBER OF PARAMETERS",
+        "language": "C",
+        "subgroup": "F5",
+        "description": "NUMBER OF PARAMETERS",
+        "content": [
+            "A function must not have more than 4 parameters.",
+            "Writing variadic functions is allowed, but they must not be used to circumvent the limit of 4 parameters."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F6 - FUNCTIONS WITHOUT PARAMETERS",
+        "language": "C",
+        "subgroup": "F6",
+        "description": "FUNCTIONS WITHOUT PARAMETERS",
+        "content": [
+            "A function taking no parameters must take void as a parameter in the function declaration."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F7 - STRUCTURES AS PARAMETERS",
+        "language": "C",
+        "subgroup": "F7",
+        "description": "STRUCTURES AS PARAMETERS",
+        "content": [
+            "Structures must be transmitted as arguments using a pointer, not by copy."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F8 - COMMENTS INSIDE A FUNCTION",
+        "language": "C",
+        "subgroup": "F8",
+        "description": "COMMENTS INSIDE A FUNCTION",
+        "content": [
+            "There must be no comment within a function.",
+            "The function should be readable and self-explanatory, without further need for explanations inside it."
+        ]
+    },
+    {
+        "title": "C-F - FUNCTIONS",
+        "subtitle": "C-F9 - NESTED FUNCTIONS",
+        "language": "C",
+        "subgroup": "F9",
+        "description": "NESTED FUNCTIONS",
+        "content": [
+            "Nested functions are not allowed, because they are an extension of the GNU C standard, and because they",
+            "greatly increase complexity."
+        ]
+    },
+    {
+        "title": "C-L - LAYOUT INSIDE A FUNCTION SCOPE",
+        "subtitle": "C-L1 - CODE LINE CONTENT",
+        "language": "C",
+        "subgroup": "L1",
+        "description": "CODE LINE CONTENT",
+        "content": [
+            "A line must correspond to only one statement.",
+            "Typical situations to avoid include:",
+            "- several assignments on the same line;",
+            "- several semicolons on the same line used to separate several statements;",
+            "- a condition and an assignment on the same line.",
+            "The only exception to this rule is the for loop control structure, which idiomatically allows several operations",
+            "on the same line (initialization, loop condition, and post-iteration operation)."
+        ]
+    },
+    {
+        "title": "C-L - LAYOUT INSIDE A FUNCTION SCOPE",
+        "subtitle": "C-L2 - INDENTATION",
+        "language": "C",
+        "subgroup": "L2",
+        "description": "INDENTATION",
+        "content": [
+            "Each indentation level must be done by using 4 spaces.",
+            "No tabulations may be used for indentation.",
+            "When entering a new scope (e.g.: control structure), the indentation level must be incremented.",
+            "Comment blocks' bodies can be freely indented (with spaces):"
+        ]
+    },
+    {
+        "title": "C-L - LAYOUT INSIDE A FUNCTION SCOPE",
+        "subtitle": "C-L3 - SPACES",
+        "language": "C",
+        "subgroup": "L3",
+        "description": "SPACES",
+        "content": [
+            "When using a space as a separator, one and only one space character must be used.",
+            "Always place a space after a comma or a keyword (if it has arguments).",
+            "However, there must be no spaces between the name of a function and the opening parenthesis, after a",
+            "unary operator, or before a semicolon.",
+            "In the precise case of a for control structure, if a semicolon inside the parentheses is not immediately fol-",
+            "lowed by another semicolon, it must be followed by a space.",
+            "All binary and ternary operators must be separated from their arguments by a space on both sides."
+        ]
+    },
+    {
+        "title": "C-L - LAYOUT INSIDE A FUNCTION SCOPE",
+        "subtitle": "C-L4 - CURLY BRACKETS",
+        "language": "C",
+        "subgroup": "L4",
+        "description": "CURLY BRACKETS",
+        "content": [
+            "Opening curly brackets must be at the end of the line, after the content it precedes, except for functions",
+            "definitions where they must be placed alone on their line.",
+            "Closing curly brackets must be alone on their line, except in the case of else/else if control structures, enum",
+            "declarations, or structure declarations (with or without an associated typedef)."
+        ]
+    },
+    {
+        "title": "C-L - LAYOUT INSIDE A FUNCTION SCOPE",
+        "subtitle": "C-L5 - VARIABLE DECLARATIONS",
+        "language": "C",
+        "subgroup": "L5",
+        "description": "VARIABLE DECLARATIONS",
+        "content": [
+            "Variables must be declared at the beginning of the scope of the function.",
+            "Only one variable must be declared per line.",
+            "The for control structures may also optionally declare variables in their initialization part."
+        ]
+    },
+    {
+        "title": "C-L - LAYOUT INSIDE A FUNCTION SCOPE",
+        "subtitle": "C-L6 - LINE JUMPS",
+        "language": "C",
+        "subgroup": "L6",
+        "description": "LINE JUMPS",
+        "content": [
+            "A line break must separate the variable declarations from the remainder of the function.",
+            "No other line breaks must be present in the scope of a function."
+        ]
+    },
+    {
+        "title": "C-V - VARIABLES AND TYPES",
+        "subtitle": "C-V1 - NAMING IDENTIFIERS",
+        "language": "C",
+        "subgroup": "V1",
+        "description": "NAMING IDENTIFIERS",
+        "content": [
+            "All identifier names must be in English, according to the snake_case convention (meaning it is composed",
+            "exclusively of lowercase, numbers, and underscores).",
+            "The type names defined with typedef must end with _t.",
+            "The names of macros and global constants and the content of enums must be written in UPPER_SNAKE_CASE."
+        ]
+    },
+    {
+        "title": "C-V - VARIABLES AND TYPES",
+        "subtitle": "C-V2 - STRUCTURES",
+        "language": "C",
+        "subgroup": "V2",
+        "description": "STRUCTURES",
+        "content": [
+            "Variables can be grouped together into a structure if and only if they form a coherent entity.",
+            "Structures must be kept as small as possible."
+        ]
+    },
+    {
+        "title": "C-V - VARIABLES AND TYPES",
+        "subtitle": "C-V3 - POINTERS",
+        "language": "C",
+        "subgroup": "V3",
+        "description": "POINTERS",
+        "content": [
+            "The pointer symbol (*) must be attached to the associated variable, with no spaces.",
+            "Unless otherwise specified, all control structures are allowed."
+        ]
+    },
+    {
+        "title": "C-C - CONTROL STRUCTURES",
+        "subtitle": "C-C1 - CONDITIONAL BRANCHING",
+        "language": "C",
+        "subgroup": "C1",
+        "description": "CONDITIONAL BRANCHING",
+        "content": [
+            "A conditionnal block (while, for, if, else, . . . ) must not contain more than 3 branches.",
+            "Nested conditional branches with a depth of 3 or more must be avoided."
+        ]
+    },
+    {
+        "title": "C-C - CONTROL STRUCTURES",
+        "subtitle": "C-C2 - TERNARY OPERATORS",
+        "language": "C",
+        "subgroup": "C2",
+        "description": "TERNARY OPERATORS",
+        "content": [
+            "The use of ternary operators is allowed as far as it is kept simple and readable, and it does not obfuscate",
+            "code."
+        ]
+    },
+    {
+        "title": "C-C - CONTROL STRUCTURES",
+        "subtitle": "C-C3 - goto",
+        "language": "C",
+        "subgroup": "C3",
+        "description": "goto",
+        "content": [
+            "Using the goto keyword is forbidden, because it can very quickly participate in the creation of infamous",
+            "spaghetti code, which is completely illegible."
+        ]
+    },
+    {
+        "title": "C-H - HEADER FILES",
+        "subtitle": "C-H1 - CONTENT",
+        "language": "C",
+        "subgroup": "H1",
+        "description": "CONTENT",
+        "content": [
+            "Header files must only contain:",
+            "- function prototypes,",
+            "- type declarations,",
+            "- global variable/constant declarations,",
+            "- macros,",
+            "- static inline functions.",
+            "All these elements must only be found in header files, and thus not in source files."
+        ]
+    },
+    {
+        "title": "C-H - HEADER FILES",
+        "subtitle": "C-H2 - INCLUDE GUARD",
+        "language": "C",
+        "subgroup": "H2",
+        "description": "INCLUDE GUARD",
+        "content": [
+            "Headers must be protected from double inclusion.",
+            "The method and the conventions used are left free."
+        ]
+    },
+    {
+        "title": "C-H - HEADER FILES",
+        "subtitle": "C-H3 - MACROS",
+        "language": "C",
+        "subgroup": "H3",
+        "description": "MACROS",
+        "content": [
+            "Macros must match only one statement, and fit on a single line."
+        ]
+    },
+    {
+        "title": "C-A - ADVANCED",
+        "subtitle": "C-A1 - CONSTANT POINTERS",
+        "language": "C",
+        "subgroup": "A1",
+        "description": "CONSTANT POINTERS",
+        "content": [
+            "When creating a pointer, if the pointed data is not (or should not be) modified by the function, it should be",
+            "marked as constant (const)."
+        ]
+    },
+    {
+        "title": "C-A - ADVANCED",
+        "subtitle": "C-A2 - TYPING",
+        "language": "C",
+        "subgroup": "A2",
+        "description": "TYPING",
+        "content": [
+            "Prefer the most accurate types possible according to the use of the data."
+        ]
+    },
+    {
+        "title": "C-A - ADVANCED",
+        "subtitle": "C-A3 - LINE BREAK AT THE END OF FILE",
+        "language": "C",
+        "subgroup": "A3",
+        "description": "LINE BREAK AT THE END OF FILE",
+        "content": [
+            "Files must end with a line break.",
+            "The reason for this is tied to the POSIX's definition of a line:"
+        ]
+    },
+    {
+        "title": "C-A - ADVANCED",
+        "subtitle": "C-A4 - STATIC",
+        "language": "C",
+        "subgroup": "A4",
+        "description": "STATIC",
+        "content": [
+            "Global variables and functions that are not used outside the compilation unit to which they belong should",
+            "be marked with the static keyword."
+        ]
+    }
+]
