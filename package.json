@@ -3,6 +3,10 @@
   "displayName": "banana-vscode",
   "description": "Epitech coding style verification for VSCode",
   "publisher": "ripel2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ripel2/banana-vscode"
+  },
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.72.0"
