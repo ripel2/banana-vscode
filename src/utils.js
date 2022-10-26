@@ -30,35 +30,48 @@ function getSeverityAsVSCode(severity) {
 
 /**
  * Tries to find the best range to highlight in the editor using specific rules.
- * @param {*} file 
- * @param {*} line 
- * @param {*} severity 
- * @param {*} language 
- * @param {*} subgroup 
- * @param {*} projectFile 
- * @returns 
+ * @param {string} file 
+ * @param {number} line 
+ * @param {string} severity 
+ * @param {string} language 
+ * @param {string} subgroup 
+ * @param {Object} projectFile 
+ * @returns {vscode.Range}
  */
 function getSmartRange(file, line, severity, language, subgroup, projectFile) {
+	var range = null;
+	var skipTabsGroups = ["C3", "A1", "A2", "V1", "V2", "V3", "L5", "F8"];
+
 	if (subgroup === "G7") {
 		var lineContent = projectFile.lines[line - 1];
 		var match = lineContent.match(/ +$/);
 
 		if (match != null) {
-			return new vscode.Range(line - 1, match.index, line - 1, lineContent.length);
+			range = new vscode.Range(line - 1, match.index, line - 1, lineContent.length);
 		}
 	}
 	if (subgroup === "F3") {
-		return new vscode.Range(line - 1, 79, line - 1, 69420);
+		range = new vscode.Range(line - 1, 79, line - 1, 69420);
 	}
 	if (subgroup === "L2") {
 		var lineContent = projectFile.lines[line - 1];
 		var match = lineContent.match(/^\s+/);
 
 		if (match != null) {
-			return new vscode.Range(line - 1, 0, line - 1, match.index + match[0].length);
+			range = new vscode.Range(line - 1, 0, line - 1, match.index + match[0].length);
 		}
 	}
-	return null;
+	if (skipTabsGroups.includes(subgroup)) {
+		var lineContent = projectFile.lines[line - 1];
+		var match = lineContent.match(/^\s+/);
+
+		if (match != null && range) {
+			range.start.translate(0, match.index + match[0].length);
+		} else if (match != null) {
+			range = new vscode.Range(line - 1, match.index + match[0].length, line - 1, 69420);
+		}
+	}
+	return range;
 }
 
 /**
