@@ -8,6 +8,6 @@ vsc-extension-quickstart.md
 **/*.map
 **/.eslintrc.json
 
-epitech-c-coding-style.pdf
+epitech_c_coding_style.pdf
 extract-pdf.py
 requirements.txt
