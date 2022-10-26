@@ -7,4 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 26/10/2022
 ### Added
-- Coding style checking using 
+- Coding style checking using the official Docker Image
+- Highlight errors using the VSCode Diagnostics API
+- Hide reported errors with a manual command (banana-vscode.clearAllBananaErrors)
