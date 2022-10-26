@@ -2,7 +2,8 @@
   "name": "banana-vscode",
   "displayName": "banana-vscode",
   "description": "Epitech coding style verification for VSCode",
-  "version": "0.0.1",
+  "publisher": "ripel2",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.72.0"
   },
