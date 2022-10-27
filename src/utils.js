@@ -1,4 +1,7 @@
 const vscode = require('vscode');
+const cp = require('child_process');
+
+const {startCommand} = require('./system.js');
 
 /**
  * Returns the current date as a string safe to use in a filename.
@@ -12,7 +15,7 @@ const vscode = require('vscode');
 	const hours = date.getHours();
 	const minutes = date.getMinutes();
 	const seconds = date.getSeconds();
-	const pad = (n) => n.padStart(2, '0');
+	const pad = (n) => n < 10 ? `0${n}` : n;
 
 	return `${year}-${pad(month)}-${pad(day)}_${pad(hours)}-${pad(minutes)}-${pad(seconds)}`;
 }
@@ -97,8 +100,27 @@ function getReportErrorRange(file, line, severity, language, subgroup, projectFi
 	return new vscode.Range(line - 1, 0, line - 1, endChar);
 }
 
+/**
+ * Checks if a given file is in the gitignore file of the project.
+ * @param {string} file
+ * @returns {boolean}
+ */
+function fileIsInGitignore(file) {
+	const deliveryDir = `${vscode.workspace.workspaceFolders[0].uri.path}`;
+
+	try {
+		var result = cp.execSync(`cd ${deliveryDir} && git check-ignore ${file}`);
+
+		return result.toString().trim() === file;
+	} catch (err) {
+		
+	}
+	return false;
+}
+
 module.exports = {
     getCurrentDateAsString,
     getSeverityAsVSCode,
-    getReportErrorRange
+    getReportErrorRange,
+	fileIsInGitignore
 }
