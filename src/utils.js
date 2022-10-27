@@ -15,7 +15,7 @@ const {startCommand} = require('./system.js');
 	const hours = date.getHours();
 	const minutes = date.getMinutes();
 	const seconds = date.getSeconds();
-	const pad = (n) => n.padStart(2, '0');
+	const pad = (n) => n < 10 ? `0${n}` : n;
 
 	return `${year}-${pad(month)}-${pad(day)}_${pad(hours)}-${pad(minutes)}-${pad(seconds)}`;
 }

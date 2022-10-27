@@ -1,6 +1,6 @@
 const vscode = require('vscode');
 const fs = require('fs');
-const {getSeverityAsVSCode, getReportErrorRange, fileIsInGitignore} = require('./utils.js');
+const {getSeverityAsVSCode, getReportErrorRange, fileIsInGitignore, getCurrentDateAsString} = require('./utils.js');
 const {startCommand} = require('./system.js');
 // @ts-ignore
 const codingStyleExtractData = require('../epitech_c_coding_style.json')
@@ -142,10 +142,14 @@ function startBanana() {
 		vscode.window.showErrorMessage("Banana: no workspace opened");
 		return;
 	}
+	let configuration = vscode.workspace.getConfiguration('banana-vscode');
 	const deliveryDir = `${vscode.workspace.workspaceFolders[0].uri.path}`;
-	const reportsDir = `${deliveryDir}/banana_reports/}`;
+	var reportsDir = `${deliveryDir}/banana_reports/}`;
 	var projectFiles = getAllProjectFiles(deliveryDir);
-
+	
+	if (configuration.keepReports) {
+		reportsDir = `${deliveryDir}/banana_reports/${getCurrentDateAsString()}`;
+	}
 	vscode.window.withProgress({
 		location: vscode.ProgressLocation.Notification,
 	}, async (progress) => {
@@ -166,12 +170,16 @@ function startBanana() {
 		
 		bananaDiagnosticCollection.clear();
 		processAllReportFiles(reportsDir, projectFiles);
-		await startCommand(`rm -rfd "${reportsDir}" && rmdir "${reportsDir}"`);
+		if (configuration.keepReports) {
+			vscode.window.showInformationMessage(`Banana: report generated in ${reportsDir}`);
+		} else {
+			await startCommand(`rm -rfd "${reportsDir}"`);
+		}
 	});
 }
 
 /**
- * Removes all norm errors currently displayed in VSCode.
+ * Removes all coding style errors currently displayed in VSCode.
  * @returns {void}
  */
 function clearAllBananaErrors() {
