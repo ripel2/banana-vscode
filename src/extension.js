@@ -67,6 +67,7 @@ function getAllProjectFiles(folder, subfolder = '') {
  * @param {Object} projectFile The project file object containing the file path and the file contents.
  */
 function processReportError(file, line, severity, language, subgroup, projectFile) {
+	let configuration = vscode.workspace.getConfiguration('banana-vscode');
 	let range = getReportErrorRange(file, line, severity, language, subgroup, projectFile);
 	let severityVSC = getSeverityAsVSCode(severity);
 	let fullCode = `${language}-${subgroup}`;
@@ -79,7 +80,7 @@ function processReportError(file, line, severity, language, subgroup, projectFil
 		}
 	}
 
-	if (subgroup === "O1" && fileIsInGitignore(file)) {
+	if (subgroup === "O1" && configuration.ignoreFilesInGitignore === "O1 only" && fileIsInGitignore(file)) {
 		return;
 	}
 
@@ -99,6 +100,7 @@ function processReportError(file, line, severity, language, subgroup, projectFil
  * @param {Map} projectFileMap The project file map generated for the current project.
  */
 function processReportFile(reportFile, projectFileMap) {
+	let configuration = vscode.workspace.getConfiguration('banana-vscode');
 	const deliveryDir = `${vscode.workspace.workspaceFolders[0].uri.path}`;
 	const errorRegex = new RegExp('(.*):([0-9]{0,4}): (MAJOR|MINOR|INFO):(C)-(.[0-9]{1,3})', 'gm');
 	let fileContent = reportFile.toString()
@@ -111,6 +113,9 @@ function processReportFile(reportFile, projectFileMap) {
 		let projectFile = projectFileMap.get(file);
 
 		file = deliveryDir + file.substring(1);
+		if (configuration.ignoreFilesInGitignore === "true" && fileIsInGitignore(file)) {
+			continue;
+		}
 		processReportError(file, line, severity, language, subgroup, projectFile);
 	}
 }
