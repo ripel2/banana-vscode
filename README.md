@@ -11,7 +11,7 @@ Epitech coding style verification for VSCode
 ---
 
 ## Requirements
-- Linux or Windows with WSL (native Windows support coming later)
+- Linux or Windows with WSL
 - VSCode 1.72.0 or newer
 - Docker installed on the host computer
 - User in Docker group (the extension cannot execute sudo commands !)
