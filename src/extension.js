@@ -2,60 +2,14 @@ const vscode = require('vscode');
 const fs = require('fs');
 const {getSeverityAsVSCode, getReportErrorRange, fileIsInGitignore, getCurrentDateAsString} = require('./utils.js');
 const {startCommand} = require('./system.js');
+const {checkDockerGroup, checkDockerIsInstalled} = require('./checks.js');
+const {getAllProjectFiles} = require('./filesystem.js');
 // @ts-ignore
 const codingStyleExtractData = require('../epitech_c_coding_style.json')
 
 const bananaDiagnosticCollection = vscode.languages.createDiagnosticCollection('banana-coding-style');
 
 const DOCKER_IMAGE_URL = 'ghcr.io/epitech/coding-style-checker:latest';
-
-/**
- * Reads a file and returns all its lines as an array.
- * @param {string} file 
- * @returns {string[]}
- */
-function getAllFilesLines(file) {
-	try {
-		let lines = fs.readFileSync(file).toString().split("\n");
-
-		return lines;
-	} catch (err) {
-		console.error(err);
-		return [];
-	}
-}
-
-/**
- * Reads all the project c source and header files and returns them as an array of objects
- * containing the file path and the file contents.
- * @param {string} folder
- * @param {string} subfolder
- * @returns {Array<{file: string, absolutePath: string, relativePath: string, lines: string[]}>}
- */
-function getAllProjectFiles(folder, subfolder = '') {
-	let files = fs.readdirSync(folder);
-	let results = [];
-
-	for (let file of files) {
-		let absolutePath = `${folder}/${file}`;
-		let stat = fs.statSync(absolutePath);
-
-		if (stat.isDirectory()) {
-			results = results.concat(getAllProjectFiles(absolutePath, subfolder + '/' + file));
-		} else {
-			if (!file.endsWith('.c') && !file.endsWith('.h') && file != 'Makefile') {
-				continue;
-			}
-			results.push({
-				file: file,
-				absolutePath: absolutePath,
-				relativePath: `.${subfolder}/${file}`,
-				lines: getAllFilesLines(absolutePath)
-			})
-		}
-	}
-	return results;
-}
 
 /**
  * Processes a line from the report file and shows it in the editor diagnostics
@@ -189,40 +143,6 @@ function startBanana() {
  */
 function clearAllBananaErrors() {
 	bananaDiagnosticCollection.clear();
-}
-
-/**
- * Checks if the user is in the 'docker' user group.
- */
-function checkDockerGroup() {
-	startCommand('id -nG')
-	.then((stdout) => {
-		if (!stdout.includes('docker')) {
-			vscode.window.showWarningMessage("Banana: user is not in the docker group. You may experience trouble while using the extension.",
-			"Show me how to solve this")
-			.then((choice) => {
-				if (choice === "Show me how to solve this") {
-					vscode.env.openExternal(vscode.Uri.parse("https://docs.docker.com/engine/install/linux-postinstall/"));
-				}
-			});
-		}
-	})
-}
-
-/**
- * Checks if Docker is installed on the system.
- */
-function checkDockerIsInstalled() {
-	startCommand('docker --version')
-	.catch(() => {
-		vscode.window.showErrorMessage("Banana: Docker is not installed on your system. Please install it to use this extension.",
-		"Show me how to install Docker")
-		.then((choice) => {
-			if (choice === "Show me how to install Docker") {
-				vscode.env.openExternal(vscode.Uri.parse("https://docs.docker.com/engine/install/"));
-			}
-		});
-	});
 }
 
 /**
